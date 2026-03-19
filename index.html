@@ -94,8 +94,8 @@ transition: color 0.2s;
 }
 .nav-links a:hover { color: #6B7F45; }
 .nav-cta {
-background: #6B7F45 !important;
-color: #EDEADE !important;
+background: #7a9150 !important;
+color: #ffffff !important;
 padding: 10px 24px !important;
 border-radius: 2px;
 font-weight: 500 !important;
@@ -600,35 +600,32 @@ appearance: none;
 .f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: #6B7F45; }
 .f-group textarea { resize: vertical; min-height: 100px; }
 
-/* CHECKBOXES */
-.checks {
-background: #ffffff !important;
+/* ADD-ONS SELECT */
+.addons-select {
+width: 100%;
+min-height: 160px;
+padding: 8px;
 border: 1px solid rgba(107,127,69,0.2);
 border-radius: 4px;
-overflow: hidden;
-}
-.check-row {
-display: flex;
-align-items: center;
-gap: 14px;
+font-family: ‘Jost’, sans-serif;
 font-size: 13.5px;
-color: #2e2e2e !important;
+font-weight: 300;
+color: #2e2e2e;
+background: #ffffff;
+outline: none;
 cursor: pointer;
-padding: 16px;
-border-bottom: 1px solid rgba(107,127,69,0.08);
--webkit-tap-highlight-color: transparent;
-user-select: none;
-min-height: 52px;
-}
-.check-row:last-child { border-bottom: none; }
-.check-row input[type=checkbox] {
-width: 20px;
-height: 20px;
-min-width: 20px;
-flex-shrink: 0;
 accent-color: #6B7F45;
+}
+.addons-select option {
+padding: 10px 8px;
+line-height: 2;
 cursor: pointer;
-margin: 0;
+}
+.addons-hint {
+font-size: 11px;
+color: #7a7a6e;
+margin-top: 6px;
+display: block;
 }
 
 .submit-btn {
@@ -1006,16 +1003,17 @@ nav { padding: 0 24px; }
         <option value="journey">The Journey — $150 per month</option>
       </select>
     </div>
-    <div class="f-group">
-      <label>Add-Ons (optional)</label>
-      <div class="checks">
-        <label class="check-row"><input type="checkbox"> Extra Video Call with Jackie — +$30</label>
-        <label class="check-row"><input type="checkbox"> Mid-Month Plan Adjustment — +$20</label>
-        <label class="check-row"><input type="checkbox"> Accountability Tracker (Starter clients only) — +$20</label>
-        <label class="check-row"><input type="checkbox"> Diabetes-Specific Planning — +$30</label>
-        <label class="check-row"><input type="checkbox"> Family Meal Planning — +$40</label>
+      <div class="f-group">
+        <label>Add-Ons (optional)</label>
+        <select class="addons-select" id="f-addons" multiple>
+          <option value="videocall">Extra Video Call with Jackie — +$30</option>
+          <option value="midmonth">Mid-Month Plan Adjustment — +$20</option>
+          <option value="accountability">Accountability Tracker (Starter only) — +$20</option>
+          <option value="diabetes">Diabetes-Specific Planning — +$30</option>
+          <option value="family">Family Meal Planning — +$40</option>
+        </select>
+        <span class="addons-hint">Tap to select. Tap again to deselect. Select multiple if needed.</span>
       </div>
-    </div>
     <div class="f-group"><label>Anything you want us to know? (optional)</label><textarea id="f-notes" placeholder="Goals, health background, questions. Anything you would like to share before we connect."></textarea></div>
     <button class="submit-btn" id="submit-btn">Submit My Selection</button>
   </div>
