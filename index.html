@@ -602,7 +602,7 @@ appearance: none;
 
 /* CHECKBOXES — full row is tappable */
 .checks {
-background: #ffffff;
+background: #ffffff !important;
 border: 1px solid rgba(107,127,69,0.2);
 border-radius: 4px;
 overflow: hidden;
@@ -612,22 +612,48 @@ display: flex;
 align-items: center;
 gap: 14px;
 font-size: 13.5px;
-color: #2e2e2e;
+color: #2e2e2e !important;
 cursor: pointer;
 line-height: 1.5;
-padding: 14px 16px;
+padding: 16px 16px;
 border-bottom: 1px solid rgba(107,127,69,0.08);
 -webkit-tap-highlight-color: transparent;
 user-select: none;
+min-height: 52px;
 }
 .check-row:last-child { border-bottom: none; }
 .check-row input[type=checkbox] {
 flex-shrink: 0;
-width: 20px;
-height: 20px;
-min-width: 20px;
+width: 22px;
+height: 22px;
+min-width: 22px;
 accent-color: #6B7F45;
 cursor: pointer;
+margin: 0;
+padding: 0;
+border: 2px solid rgba(107,127,69,0.4);
+border-radius: 3px;
+appearance: none;
+-webkit-appearance: none;
+background-color: #ffffff;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.check-row input[type=checkbox]:checked {
+background-color: #6B7F45;
+border-color: #6B7F45;
+}
+.check-row input[type=checkbox]:checked::after {
+content: ‘’;
+position: absolute;
+width: 5px;
+height: 9px;
+border: 2px solid #ffffff;
+border-top: none;
+border-left: none;
+transform: rotate(45deg) translate(-1px, -1px);
 }
 
 .submit-btn {
