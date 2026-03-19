@@ -1204,8 +1204,47 @@ nav { padding: 0 24px; }
       alert('Please enter a valid email address.');
       return;
     }
-    document.getElementById('form-body').style.display = 'none';
-    document.getElementById('success-box').classList.add('show');
+
+    // Collect selected add-ons
+    var selectedAddons = [];
+    var toggleBtns = document.querySelectorAll('.addon-toggle.selected');
+    for (var a = 0; a < toggleBtns.length; a++) {
+      selectedAddons.push(toggleBtns[a].getAttribute('data-value'));
+    }
+
+    var notes = document.getElementById('f-notes').value.trim();
+
+    var submitBtn = document.getElementById('submit-btn');
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    fetch('https://formspree.io/f/mgondlrg', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'First Name': first,
+        'Last Name': last,
+        'Email': email,
+        'Plan': plan === 'starter' ? 'Starter Plan — $50 one time' : 'The Journey — $150 per month',
+        'Add-Ons': selectedAddons.length > 0 ? selectedAddons.join(', ') : 'None',
+        'Notes': notes || 'None'
+      })
+    })
+    .then(function(res) {
+      if (res.ok) {
+        document.getElementById('form-body').style.display = 'none';
+        document.getElementById('success-box').classList.add('show');
+      } else {
+        alert('Something went wrong. Please email us directly at endlessgracenutrition@gmail.com');
+        submitBtn.textContent = 'Submit My Selection';
+        submitBtn.disabled = false;
+      }
+    })
+    .catch(function() {
+      alert('Something went wrong. Please email us directly at endlessgracenutrition@gmail.com');
+      submitBtn.textContent = 'Submit My Selection';
+      submitBtn.disabled = false;
+    });
   });
 
 })();
