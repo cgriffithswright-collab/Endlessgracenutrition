@@ -600,7 +600,7 @@ appearance: none;
 .f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: #6B7F45; }
 .f-group textarea { resize: vertical; min-height: 100px; }
 
-/* CHECKBOXES — full row tappable, simple and reliable */
+/* CHECKBOXES */
 .checks {
 background: #ffffff !important;
 border: 1px solid rgba(107,127,69,0.2);
@@ -614,8 +614,7 @@ gap: 14px;
 font-size: 13.5px;
 color: #2e2e2e !important;
 cursor: pointer;
-line-height: 1.5;
-padding: 16px 16px;
+padding: 16px;
 border-bottom: 1px solid rgba(107,127,69,0.08);
 -webkit-tap-highlight-color: transparent;
 user-select: none;
@@ -623,10 +622,10 @@ min-height: 52px;
 }
 .check-row:last-child { border-bottom: none; }
 .check-row input[type=checkbox] {
+width: 20px;
+height: 20px;
+min-width: 20px;
 flex-shrink: 0;
-width: 22px;
-height: 22px;
-min-width: 22px;
 accent-color: #6B7F45;
 cursor: pointer;
 margin: 0;
@@ -1010,11 +1009,11 @@ nav { padding: 0 24px; }
     <div class="f-group">
       <label>Add-Ons (optional)</label>
       <div class="checks">
-        <label class="check-row" for="chk1"><input type="checkbox" id="chk1" name="addon"/> Extra Video Call with Jackie — +$30</label>
-        <label class="check-row" for="chk2"><input type="checkbox" id="chk2" name="addon"/> Mid-Month Plan Adjustment — +$20</label>
-        <label class="check-row" for="chk3"><input type="checkbox" id="chk3" name="addon"/> Accountability Tracker (Starter clients only) — +$20</label>
-        <label class="check-row" for="chk4"><input type="checkbox" id="chk4" name="addon"/> Diabetes-Specific Planning — +$30</label>
-        <label class="check-row" for="chk5"><input type="checkbox" id="chk5" name="addon"/> Family Meal Planning — +$40</label>
+        <label class="check-row"><input type="checkbox"> Extra Video Call with Jackie — +$30</label>
+        <label class="check-row"><input type="checkbox"> Mid-Month Plan Adjustment — +$20</label>
+        <label class="check-row"><input type="checkbox"> Accountability Tracker (Starter clients only) — +$20</label>
+        <label class="check-row"><input type="checkbox"> Diabetes-Specific Planning — +$30</label>
+        <label class="check-row"><input type="checkbox"> Family Meal Planning — +$40</label>
       </div>
     </div>
     <div class="f-group"><label>Anything you want us to know? (optional)</label><textarea id="f-notes" placeholder="Goals, health background, questions. Anything you would like to share before we connect."></textarea></div>
