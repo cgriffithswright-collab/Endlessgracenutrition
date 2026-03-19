@@ -1231,4 +1231,15 @@ if (!/^[^\s@]+@[^\s@]+.[^\s@]+$/.test(email)) {
 alert(‘Please enter a valid email address.’);
 return;
 }
-var formBody = document.getE
+var formBody = document.getElementById(‘form-body’);
+var successBox = document.getElementById(‘success-box’);
+if (formBody) formBody.style.display = ‘none’;
+if (successBox) successBox.classList.add(‘show’);
+});
+}
+
+})();
+</script>
+
+</body>
+</html>
