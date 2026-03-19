@@ -600,32 +600,53 @@ appearance: none;
 .f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: #6B7F45; }
 .f-group textarea { resize: vertical; min-height: 100px; }
 
-/* ADD-ONS SELECT */
-.addons-select {
-width: 100%;
-min-height: 160px;
-padding: 8px;
-border: 1px solid rgba(107,127,69,0.2);
+/* ADD-ONS TOGGLE BUTTONS */
+.addon-toggles {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+.addon-toggle {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 14px 16px;
+background: #ffffff;
+border: 1.5px solid rgba(107,127,69,0.25);
 border-radius: 4px;
+cursor: pointer;
 font-family: ‘Jost’, sans-serif;
 font-size: 13.5px;
-font-weight: 300;
+font-weight: 400;
 color: #2e2e2e;
-background: #ffffff;
-outline: none;
-cursor: pointer;
-accent-color: #6B7F45;
+transition: all 0.2s;
+-webkit-tap-highlight-color: transparent;
+user-select: none;
+text-align: left;
+width: 100%;
 }
-.addons-select option {
-padding: 10px 8px;
-line-height: 2;
-cursor: pointer;
+.addon-toggle.selected {
+background: #6B7F45;
+border-color: #6B7F45;
+color: #ffffff;
 }
-.addons-hint {
+.addon-toggle-check {
+width: 20px;
+height: 20px;
+border-radius: 50%;
+border: 1.5px solid rgba(107,127,69,0.3);
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
 font-size: 11px;
-color: #7a7a6e;
-margin-top: 6px;
-display: block;
+color: transparent;
+transition: all 0.2s;
+}
+.addon-toggle.selected .addon-toggle-check {
+background: rgba(255,255,255,0.25);
+border-color: rgba(255,255,255,0.5);
+color: #ffffff;
 }
 
 .submit-btn {
@@ -1005,14 +1026,28 @@ nav { padding: 0 24px; }
     </div>
       <div class="f-group">
         <label>Add-Ons (optional)</label>
-        <select class="addons-select" id="f-addons" multiple>
-          <option value="videocall">Extra Video Call with Jackie — +$30</option>
-          <option value="midmonth">Mid-Month Plan Adjustment — +$20</option>
-          <option value="accountability">Accountability Tracker (Starter only) — +$20</option>
-          <option value="diabetes">Diabetes-Specific Planning — +$30</option>
-          <option value="family">Family Meal Planning — +$40</option>
-        </select>
-        <span class="addons-hint">Tap to select. Tap again to deselect. Select multiple if needed.</span>
+        <div class="addon-toggles">
+          <button type="button" class="addon-toggle" data-value="Extra Video Call with Jackie (+$30)">
+            <span>Extra Video Call with Jackie — +$30</span>
+            <div class="addon-toggle-check">✓</div>
+          </button>
+          <button type="button" class="addon-toggle" data-value="Mid-Month Plan Adjustment (+$20)">
+            <span>Mid-Month Plan Adjustment — +$20</span>
+            <div class="addon-toggle-check">✓</div>
+          </button>
+          <button type="button" class="addon-toggle" data-value="Accountability Tracker (+$20)">
+            <span>Accountability Tracker (Starter only) — +$20</span>
+            <div class="addon-toggle-check">✓</div>
+          </button>
+          <button type="button" class="addon-toggle" data-value="Diabetes-Specific Planning (+$30)">
+            <span>Diabetes-Specific Planning — +$30</span>
+            <div class="addon-toggle-check">✓</div>
+          </button>
+          <button type="button" class="addon-toggle" data-value="Family Meal Planning (+$40)">
+            <span>Family Meal Planning — +$40</span>
+            <div class="addon-toggle-check">✓</div>
+          </button>
+        </div>
       </div>
     <div class="f-group"><label>Anything you want us to know? (optional)</label><textarea id="f-notes" placeholder="Goals, health background, questions. Anything you would like to share before we connect."></textarea></div>
     <button class="submit-btn" id="submit-btn">Submit My Selection</button>
@@ -1146,6 +1181,14 @@ nav { padding: 0 24px; }
       badge.classList.remove('show');
     }
   });
+
+  // ADD-ON TOGGLES
+  var toggles = document.querySelectorAll('.addon-toggle');
+  for (var t = 0; t < toggles.length; t++) {
+    toggles[t].addEventListener('click', function() {
+      this.classList.toggle('selected');
+    });
+  }
 
   // FORM SUBMIT
   document.getElementById('submit-btn').addEventListener('click', function() {
