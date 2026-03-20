@@ -325,7 +325,7 @@ body { padding: 20px 12px 60px; }
   <!-- FORM -->
 
   <div class="form-body">
-    <form id="intakeForm">
+    <form id="intakeForm" onsubmit="return false;">
 
 
   <!-- 01 THE BASICS -->
@@ -548,7 +548,7 @@ body { padding: 20px 12px 60px; }
 
   <!-- SUBMIT -->
   <div class="submit-wrap">
-    <button type="submit" class="submit-btn" id="submitBtn">Submit My Form</button>
+    <button type="button" class="submit-btn" id="submitBtn">Submit My Form</button>
     <p class="submit-note">Your information is private and will only be used to build your personalized plan.</p>
   </div>
 
@@ -755,4 +755,4 @@ fetch('https://formspree.io/f/xkoqepna', {
 
 
 });
-</script>x
+</script>
