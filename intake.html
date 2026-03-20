@@ -554,12 +554,11 @@ body { padding: 20px 12px 60px; }
 
   <!-- SUCCESS -->
   <div class="success-msg" id="successMsg">
-    <h3>Thank you! 🌿</h3>
-    <p>We received your intake form and can't wait to get started on your journey.<br>You'll hear from us soon to confirm your consultation details.</p>
+    <h3>We received you. 🌿</h3>
+    <p>Thank you for taking the time to fill this out. Your form has been submitted and we will be in touch within a few hours to confirm your consultation details.<br><br>We are already looking forward to building something just for you.<br><br><em>With grace, Jackie and Cassandra</em></p>
   </div>
 
 </form>
-
 
   </div>
 
@@ -590,14 +589,12 @@ var btn = document.getElementById('submitBtn');
 btn.textContent = 'Sending...';
 btn.disabled = true;
 
-// Collect all field values
 var data = {};
 var inputs = this.querySelectorAll('input[type="text"], input[type="number"], input[type="email"], textarea');
 inputs.forEach(function(el) {
   if (el.name) data[el.name] = el.value.trim() || 'Not provided';
 });
 
-// Radio buttons
 var radios = ['Activity Level', 'Meal Prep', 'Household'];
 radios.forEach(function(rName) {
   var checked = document.querySelector('input[name="' + rName + '"]:checked');
@@ -618,4 +615,14 @@ fetch('https://formspree.io/f/xkoqepna', {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   } else {
     throw new Error('Server error');
-```
+  }
+})
+.catch(function() {
+  alert('Something went wrong. Please email us directly at endlessgracenutrition@gmail.com');
+  btn.textContent = 'Submit My Form';
+  btn.disabled = false;
+});
+
+
+});
+</script>
