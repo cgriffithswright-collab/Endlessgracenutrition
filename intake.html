@@ -574,6 +574,63 @@ body { padding: 20px 12px 60px; }
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
+(function() {
+
+document.getElementById(‘submitBtn’).addEventListener(‘click’, function() {
+var name = document.querySelector(’[name=“Full Name”]’).value.trim();
+var email = document.querySelector(’[name=“Email”]’).value.trim();
+
+
+if (!name || !email) {
+  alert('Please fill in your full name and email address before submitting.');
+  return;
+}
+
+var btn = document.getElementById('submitBtn');
+btn.textContent = 'Sending...';
+btn.disabled = true;
+
+var data = {};
+var inputs = document.querySelectorAll('#intakeForm input[type="text"], #intakeForm input[type="number"], #intakeForm input[type="email"], #intakeForm textarea');
+inputs.forEach(function(el) {
+  if (el.name) data[el.name] = el.value.trim() || 'Not provided';
+});
+
+var radios = ['Activity Level', 'Meal Prep', 'Household'];
+radios.forEach(function(rName) {
+  var checked = document.querySelector('input[name="' + rName + '"]:checked');
+  data[rName] = checked ? checked.value : 'Not selected';
+});
+
+fetch('https://formspree.io/f/xkoqepna', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(data)
+})
+.then(function(res) {
+  if (res.ok) {
+    document.getElementById('intakeForm').querySelectorAll('.section, .disclaimer, .submit-wrap').forEach(function(el) {
+      el.style.display = 'none';
+    });
+    document.getElementById('successMsg').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    alert('Something went wrong. Please email us directly at endlessgracenutrition@gmail.com');
+    btn.textContent = 'Submit My Form';
+    btn.disabled = false;
+  }
+})
+.catch(function() {
+  alert('Something went wrong. Please email us directly at endlessgracenutrition@gmail.com');
+  btn.textContent = 'Submit My Form';
+  btn.disabled = false;
+});
+
+
+});
+
+})();
+</script><script>
 document.getElementById(‘intakeForm’).addEventListener(‘submit’, function(e) {
 e.preventDefault();
 
@@ -698,4 +755,4 @@ fetch('https://formspree.io/f/xkoqepna', {
 
 
 });
-</script>
+</script>x
