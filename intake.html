@@ -325,8 +325,7 @@ body { padding: 20px 12px 60px; }
   <!-- FORM -->
 
   <div class="form-body">
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-    <form id="intakeForm" action="https://formspree.io/f/xkoqepna" method="POST" target="hidden_iframe">
+    <form id="intakeForm" action="https://formspree.io/f/xkoqepna" method="POST">
       <input type="hidden" name="_subject" value="New Client Intake Form Submission"/>
 
 
@@ -573,62 +572,3 @@ body { padding: 20px 12px 60px; }
   </div>
 
 </div>
-
-<script>
-(function() {
-  document.getElementById('hidden_iframe').addEventListener('load', function() {
-    if (document.getElementById('intakeForm').getAttribute('data-submitted') === 'true') {
-      document.getElementById('intakeForm').style.display = 'none';
-      document.getElementById('successMsg').classList.add('show');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  });
-
-  document.getElementById('intakeForm').addEventListener('submit', function() {
-    this.setAttribute('data-submitted', 'true');
-  });
-})();
-</script><script>
-
-(function() {
-document.getElementById(‘hidden_iframe’).addEventListener(‘load’, function() {
-if (document.getElementById(‘intakeForm’).getAttribute(‘data-submitted’) === ‘true’) {
-document.getElementById(‘intakeForm’).style.display = ‘none’;
-document.getElementById(‘successMsg’).classList.add(‘show’);
-window.scrollTo({ top: 0, behavior: ‘smooth’ });
-}
-});
-
-document.getElementById(‘intakeForm’).addEventListener(‘submit’, function() {
-this.setAttribute(‘data-submitted’, ‘true’);
-});
-})();
-</script><script>
-(function() {
-document.getElementById(‘hidden_iframe’).addEventListener(‘load’, function() {
-if (document.getElementById(‘intakeForm’).getAttribute(‘data-submitted’) === ‘true’) {
-document.getElementById(‘intakeForm’).style.display = ‘none’;
-document.getElementById(‘successMsg’).classList.add(‘show’);
-window.scrollTo({ top: 0, behavior: ‘smooth’ });
-}
-});
-
-document.getElementById(‘intakeForm’).addEventListener(‘submit’, function() {
-this.setAttribute(‘data-submitted’, ‘true’);
-});
-})();
-</script><script>
-(function() {
-document.getElementById(‘hidden_iframe’).addEventListener(‘load’, function() {
-if (document.getElementById(‘intakeForm’).getAttribute(‘data-submitted’) === ‘true’) {
-document.getElementById(‘intakeForm’).style.display = ‘none’;
-document.getElementById(‘successMsg’).classList.add(‘show’);
-window.scrollTo({ top: 0, behavior: ‘smooth’ });
-}
-});
-
-document.getElementById(‘intakeForm’).addEventListener(‘submit’, function() {
-this.setAttribute(‘data-submitted’, ‘true’);
-});
-})();
-</script>
