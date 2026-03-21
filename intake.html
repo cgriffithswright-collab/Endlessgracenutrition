@@ -319,17 +319,17 @@ body { padding: 20px 12px 60px; }
   <!-- WELCOME -->
 
   <div class="welcome-band">
-    <p>Welcome! We're so glad you're here. 🌿 Before your consultation, take a few minutes to fill out this form. Your answers help us build a plan that is truly made for <em>you</em>. There are no wrong answers — just be honest and we'll take it from there.</p>
+    <p>Welcome! We're so glad you're here. 🌿 Before your consultation, take a few minutes to fill out this form. Your answers help us build a plan that is truly made for <em>you</em>. There are no wrong answers. Just be honest and we will take it from there.</p>
   </div>
 
   <!-- FORM -->
 
   <div class="form-body">
-    <form id="intakeForm" action="https://formspree.io/f/xkoqepna" method="POST">
-      <input type="hidden" name="_next" value="https://endlessgracenutrition.com/intake.html?submitted=true"/>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    <form id="intakeForm" action="https://formspree.io/f/xkoqepna" method="POST" target="hidden_iframe">
       <input type="hidden" name="_subject" value="New Client Intake Form Submission"/>
 
-```
+
   <!-- 01 THE BASICS -->
   <div class="section">
     <div class="section-header">
@@ -556,12 +556,12 @@ body { padding: 20px 12px 60px; }
 
   <!-- SUCCESS -->
   <div class="success-msg" id="successMsg">
-    <h3>We received you. 🌿</h3>
-    <p>Thank you for taking the time to fill this out. Your form has been submitted and we will be in touch within a few hours to confirm your consultation details.<br><br>We are already looking forward to building something just for you.<br><br><em>With grace, Jackie and Cassandra</em></p>
+    <h3>We'll take it from here. 🌿</h3>
+    <p>Thank you for taking the time to fill this out. Your form has been submitted and we will be in touch within a few hours to confirm your consultation details.<br><br>We are already looking forward to building something just for you.<br><br><em>With grace,</em><br><em>Jackie and Cassandra</em></p>
   </div>
 
 </form>
-```
+
 
   </div>
 
@@ -576,35 +576,59 @@ body { padding: 20px 12px 60px; }
 
 <script>
 (function() {
-  if (window.location.search.indexOf('submitted=true') !== -1) {
-    document.getElementById('intakeForm').style.display = 'none';
-    document.getElementById('successMsg').classList.add('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  document.getElementById('hidden_iframe').addEventListener('load', function() {
+    if (document.getElementById('intakeForm').getAttribute('data-submitted') === 'true') {
+      document.getElementById('intakeForm').style.display = 'none';
+      document.getElementById('successMsg').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  document.getElementById('intakeForm').addEventListener('submit', function() {
+    this.setAttribute('data-submitted', 'true');
+  });
 })();
 </script><script>
 
 (function() {
-if (window.location.search.indexOf(‘submitted=true’) !== -1) {
+document.getElementById(‘hidden_iframe’).addEventListener(‘load’, function() {
+if (document.getElementById(‘intakeForm’).getAttribute(‘data-submitted’) === ‘true’) {
 document.getElementById(‘intakeForm’).style.display = ‘none’;
 document.getElementById(‘successMsg’).classList.add(‘show’);
 window.scrollTo({ top: 0, behavior: ‘smooth’ });
 }
+});
+
+document.getElementById(‘intakeForm’).addEventListener(‘submit’, function() {
+this.setAttribute(‘data-submitted’, ‘true’);
+});
 })();
 </script><script>
 (function() {
-if (window.location.search.indexOf(‘submitted=true’) !== -1) {
+document.getElementById(‘hidden_iframe’).addEventListener(‘load’, function() {
+if (document.getElementById(‘intakeForm’).getAttribute(‘data-submitted’) === ‘true’) {
 document.getElementById(‘intakeForm’).style.display = ‘none’;
 document.getElementById(‘successMsg’).classList.add(‘show’);
 window.scrollTo({ top: 0, behavior: ‘smooth’ });
 }
+});
+
+document.getElementById(‘intakeForm’).addEventListener(‘submit’, function() {
+this.setAttribute(‘data-submitted’, ‘true’);
+});
 })();
 </script><script>
 (function() {
-if (window.location.search.indexOf(‘submitted=true’) !== -1) {
+document.getElementById(‘hidden_iframe’).addEventListener(‘load’, function() {
+if (document.getElementById(‘intakeForm’).getAttribute(‘data-submitted’) === ‘true’) {
 document.getElementById(‘intakeForm’).style.display = ‘none’;
 document.getElementById(‘successMsg’).classList.add(‘show’);
 window.scrollTo({ top: 0, behavior: ‘smooth’ });
 }
+});
+
+document.getElementById(‘intakeForm’).addEventListener(‘submit’, function() {
+this.setAttribute(‘data-submitted’, ‘true’);
+});
 })();
 </script>
